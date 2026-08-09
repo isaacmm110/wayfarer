@@ -1,1 +1,12 @@
-# wayfarer
+# Wayfarer
+
+Premium travel discovery, presented as a cinematic world control room.
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
