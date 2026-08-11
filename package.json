@@ -2,34 +2,15 @@
   "name": "wayfarer",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "framer-motion": "^11.18.2",
-    "geist": "^1.7.2",
-    "lucide-react": "^0.468.0",
-    "next": "14.2.35",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-globe.gl": "^2.38.0",
-    "recharts": "^3.10.1",
-    "three": "^0.185.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.17.12",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@types/three": "^0.185.4",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.35",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.2"
+    "dev": "npm run dev --workspace=@wayfarer/world-map",
+    "build": "npm run build --workspace=@wayfarer/world-map",
+    "start": "npm run start --workspace=@wayfarer/world-map",
+    "lint": "npm run lint --workspace=@wayfarer/world-map",
+    "typecheck": "npm run typecheck --workspace=@wayfarer/world-map"
   }
 }
