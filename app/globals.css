@@ -13,6 +13,7 @@
   --accent-green: #22c55e;
   --accent-amber: #f59e0b;
   --accent-cyan: #22d3ee;
+  --accent-red: #ef4444;
 }
 
 @layer base {
@@ -70,5 +71,9 @@
 
   .glow-cyan {
     box-shadow: 0 0 36px rgba(34, 211, 238, 0.18);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 36px rgba(239, 68, 68, 0.18);
   }
 }

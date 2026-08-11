@@ -1,5 +1,14 @@
-.marker {
+.markerRoot {
   position: relative;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+}
+
+.marker {
+  position: absolute;
+  inset: 0;
   display: grid;
   width: 32px;
   height: 32px;
@@ -28,17 +37,18 @@
   width: 8px;
   height: 8px;
   border-radius: 9999px;
-  background: var(--accent-cyan);
+  background: var(--accent-red);
   box-shadow:
-    0 0 10px var(--accent-cyan),
-    0 0 22px var(--accent-cyan);
+    0 0 12px var(--accent-red),
+    0 0 28px var(--accent-red),
+    0 0 44px color-mix(in srgb, var(--accent-red) 52%, transparent);
   transition: transform 180ms ease-out;
 }
 
 .ripple {
   position: absolute;
   inset: 3px;
-  border: 1px solid var(--accent-cyan);
+  border: 1px solid var(--accent-red);
   border-radius: 9999px;
   opacity: 0;
   animation: marker-ripple 2.4s ease-out infinite;
@@ -46,24 +56,6 @@
 
 .rippleDelayed {
   animation-delay: 1.2s;
-}
-
-.tooltip {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  width: max-content;
-  min-width: 148px;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, 6px) scale(0.96);
-  transform-origin: bottom center;
-  transition:
-    opacity 180ms ease-out,
-    transform 180ms ease-out,
-    visibility 180ms;
-  will-change: opacity, transform;
 }
 
 .marker:is(:hover, :focus-visible) .markerVisual {
@@ -74,14 +66,8 @@
   transform: scale(1.25);
 }
 
-.marker:is(:hover, :focus-visible) .tooltip {
-  visibility: visible;
-  opacity: 1;
-  transform: translate(-50%, 0) scale(1);
-}
-
 .marker:focus-visible {
-  outline: 2px solid var(--accent-cyan);
+  outline: 2px solid var(--accent-red);
   outline-offset: 2px;
 }
 
@@ -104,8 +90,7 @@
   }
 
   .markerVisual,
-  .dot,
-  .tooltip {
+  .dot {
     transition: none;
   }
 }

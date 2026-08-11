@@ -19,6 +19,7 @@ const config: Config = {
         "accent-green": "var(--accent-green)",
         "accent-amber": "var(--accent-amber)",
         "accent-cyan": "var(--accent-cyan)",
+        "accent-red": "var(--accent-red)",
       },
       fontFamily: {
         sans: [
@@ -40,6 +41,7 @@ const config: Config = {
         "glow-green": "0 0 36px rgba(34, 197, 94, 0.18)",
         "glow-amber": "0 0 36px rgba(245, 158, 11, 0.18)",
         "glow-cyan": "0 0 36px rgba(34, 211, 238, 0.18)",
+        "glow-red": "0 0 36px rgba(239, 68, 68, 0.18)",
       },
     },
   },
