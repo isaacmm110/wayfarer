@@ -6,6 +6,10 @@
     "apps/*",
     "packages/*"
   ],
+  "overrides": {
+    "@types/three": "0.182.0",
+    "three": "0.182.0"
+  },
   "scripts": {
     "dev": "npm run dev --workspace=@wayfarer/world-map",
     "build": "npm run build --workspace=@wayfarer/world-map",

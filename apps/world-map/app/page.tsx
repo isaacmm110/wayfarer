@@ -2,28 +2,41 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import dynamic from "next/dynamic";
+import { useCallback, useState } from "react";
 
 import { DashboardOverlay } from "@/components/dashboard/DashboardOverlay";
-import { Globe } from "@/components/globe/Globe";
 import { TopNav } from "@/components/layout/TopNav";
 import type { Destination } from "@/lib/mock-destinations";
-import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { SITE_NAME } from "@/lib/site";
+
+const GlobeScene = dynamic(() => import("@/components/globe/Scene"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function Home() {
   const [selectedDestination, setSelectedDestination] =
     useState<Destination | null>(null);
+  const [hasSelectedDestination, setHasSelectedDestination] = useState(false);
+
+  const handleDestinationSelect = useCallback((destination: Destination) => {
+    setSelectedDestination(destination);
+    setHasSelectedDestination(true);
+  }, []);
 
   return (
     <main className="relative min-h-dvh overflow-x-clip">
       <TopNav />
 
       <section className="relative min-h-dvh overflow-hidden">
-        <div className="absolute inset-x-[-2%] bottom-[5%] top-[25%] sm:inset-x-[-6%] sm:bottom-[-15%] sm:top-[17%] lg:inset-x-[-8%] lg:bottom-[-31%] lg:top-[10%]">
-          <Globe
-            selectedDestination={selectedDestination}
-            onDestinationSelect={setSelectedDestination}
-          />
+        <div className="absolute inset-x-0 bottom-[5%] top-[23%] flex items-center justify-center">
+          <div className="aspect-square w-[min(120vw,85dvh)] lg:w-[min(62.5vw,87.5dvh)]">
+            <GlobeScene
+              selectedDestination={selectedDestination}
+              onDestinationSelect={handleDestinationSelect}
+            />
+          </div>
         </div>
 
         <motion.header
@@ -42,9 +55,6 @@ export default function Home() {
           <h1 className="text-4xl font-semibold tracking-[-0.04em] text-text-primary sm:text-5xl lg:text-6xl">
             {SITE_NAME}
           </h1>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-text-secondary sm:mt-4 sm:text-lg sm:leading-7">
-            {SITE_TAGLINE}
-          </p>
         </motion.header>
 
         <AnimatePresence>
@@ -66,7 +76,7 @@ export default function Home() {
         </AnimatePresence>
       </section>
 
-      {selectedDestination ? <DashboardOverlay /> : null}
+      {hasSelectedDestination ? <DashboardOverlay /> : null}
     </main>
   );
 }
